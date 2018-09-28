@@ -16,24 +16,22 @@ export class App extends Component {
             allSkiDays: [
                 {
                     resort: "Death Valley",
-                    date: new Date("9/26/2018"),
+                    date: "2018-09-30",
                     powder: true,
                     backcountry: false
                 },
-                {
-                    resort: "Yosemite",
-                    date: new Date("10/11/2018"),
-                    powder: false,
-                    backcountry: false
-                },
-                {
-                    resort: "Grand Canyon",
-                    date: new Date("11/6/2018"),
-                    powder: false,
-                    backcountry: true
-                },
             ]
         }
+        this.addDay = this.addDay.bind(this);
+    }
+
+    addDay(newDay) {
+        this.setState({
+            allSkiDays: [
+                ...this.state.allSkiDays,
+                newDay
+            ]
+        })
     }
 
     countDays(filter) {
@@ -51,7 +49,7 @@ export class App extends Component {
             powder={this.countDays('powder')}
             backcountry={this.countDays('backcountry')}/> :
             (this.props.location.pathname === "/add-day") ?
-                <AddDayForm /> :
+                <AddDayForm onNewDay={this.addDay}/> :
                 <SkiDayList days={this.state.allSkiDays}
                    filter={this.props.match.params.filter} />
             }

@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './ui.scss';
+import './index.scss';
 import { App } from './App.jsx';
 import { E404 } from './E404.jsx';
 import { Router, Route, Switch } from 'react-router';
